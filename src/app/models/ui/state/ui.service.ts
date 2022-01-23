@@ -218,6 +218,4 @@ export class UiService {
   setdrawmode(drawmode){
     this.uiStore.update( state => ({ ...state , drawmode: drawmode }));
   }
-
-
 }
