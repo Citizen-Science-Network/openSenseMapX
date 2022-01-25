@@ -19,6 +19,8 @@ body {
 
 .img-container {
   height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .img-container img {
@@ -30,18 +32,21 @@ body {
 .item-container {
   /*max-height: 100px;*/
   position: relative;
-  background-color: #fff;
+  background-color: white;
   display: grid;
   /*grid-template-columns: 200px 20px auto;*/
   grid-template-columns: minmax(120px, 250px) auto minmax(250px, 500px);
-  margin: 20px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 .separator {
   height: 100%;
   width: 25px;
-  background-color: #fff;
+  background-color: white;
   transform: skew(-3deg) translateX(-15px);
 }
 
@@ -72,31 +77,6 @@ body {
   height: 4px;
   background-color: #42a948;
   margin: 6px 0;
-}
-
-.description {
-  line-height: 22px;
-  margin-bottom: 8px;
-}
-
-.more-info {
-  display: block;
-  color: white;
-  padding: 2px 2px 2px 2px;
-  align-self: flex-end;
-  font-weight: bold;
-  margin: 0 8px;
-  font-size: 10px;
-  background-color: #42a948;
-  position: absolute;
-  bottom: 0;
-}
-
-/* Course details */
-
-.img-container {
-  position: relative;
-  overflow: hidden;
 }
 
 .course-details {
@@ -177,16 +157,68 @@ body {
   font-size: 10px;
 }
 
-.toggle {
+.icon {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  background: #42a948;
-  border-end-end-radius: 10px;
   display: flex;
+  bottom: 0px;
+  right: 0px;
   justify-content: center;
   align-items: center;
+  background: white;
 }
 
+.fa-arrow-circle-up {
+  color: #42a948;
+}
+
+.icon .fa-arrow-circle-up {
+  transition: transform ease-in-out 0.5s;
+}
+
+.icon.active .fa-arrow-circle-up {
+  transform: rotate(-180deg);
+}
+
+.icon .fa-arrow-circle-up:hover {
+  transform: rotate(-180deg);
+}
+
+.icon.active .fa-arrow-circle-up:hover {
+  transform: rotate(0deg);
+}
+
+.content-container {
+    position: relative;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
+    font-size: 0.6em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.modify_button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 20px;
+    margin-right: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    border-radius: 2px;
+
+}
+
+.modify_button[disabled] {
+  background-color: red;
+}

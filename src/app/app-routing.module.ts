@@ -22,6 +22,8 @@ import { FaqComponent } from './modules/core/faq/faq.component';
 import { DonateComponent } from './modules/core/donate/donate.component';
 import { ThanksComponent } from './modules/core/thanks/thanks.component';
 import { CreateComponent } from './modules/core/create/create.component';
+import { ForumComponent } from './modules/core/forum/forum.component';
+import { ThreadsComponent } from './modules/core/threads/threads.component';
 
 const routes: Routes = [
   {path: '', component: BoxSingleContainerComponent, pathMatch: 'full'},
@@ -53,7 +55,8 @@ const routes: Routes = [
     { path: 'thanks', component: ThanksComponent, data: {name: 'THANKS'}},
     { path: 'create', component: CreateComponent, data: {name: 'CREATE'}},
     { path: 'campaigns', component: CampaignsComponent, data: {name: 'CAMPAIGNS'}},
-
+    { path: 'forum', component: ForumComponent, data: {name: 'FORUM'}},
+    { path: 'threads/:threadId', component: ThreadsComponent, data: {name: 'THREADS'}}
   ]},
   {path: 'dashboard', component: ProfileContainerComponent, outlet: 'sidebar', canActivate: [AuthGuard], children: [
     {path: '', component: DashboardContainerComponent, canActivate: [AuthGuard], pathMatch: 'full'},

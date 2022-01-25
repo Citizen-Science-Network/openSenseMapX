@@ -21,6 +21,8 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
+
+
 registerLocaleData(localeDe, 'de-DE');
 // registerLocaleData(localeEm, 'de-DE');
 // AoT requires an exported function for factories
@@ -30,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent    
   ],
   imports: [
     BrowserModule,

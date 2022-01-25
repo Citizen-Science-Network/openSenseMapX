@@ -1,6 +1,6 @@
 import { PhenomenaService } from 'src/app/modules/core/services/phenomena.service';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SearchComponent } from './filter/search/search.component';
 import { SearchContainerComponent } from './filter/search-container/search-container.component';
 import { PhenomenonComponent } from './filter/phenomenon/phenomenon.component';
@@ -40,10 +40,13 @@ import { NewVisComponent } from './new-vis/new-vis.component';
 import { VisFormComponent } from './vis-form/vis-form.component';
 import { CreateComponent } from './create/create.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
+import { CampaignService } from 'src/app/models/campaign/campaign.service';
+import { ForumComponent } from './forum/forum.component';
+import { ThreadsComponent } from './threads/threads.component';
 
 
 @NgModule({
-  declarations: [FilterContainerComponent, SearchComponent, SearchContainerComponent, PhenomenonComponent, NavContainerComponent, NavRightComponent, BottomBarContainerComponent, DatepickerComponent, FilterSwitcherComponent, FilterComponent, ImpressumComponent, FaqComponent, DonateComponent, ThanksComponent, PhenoInfoComponent, PhenoInfoModalComponent, VisContainerComponent, VisComponent, FilterContainerValuesComponent, FilterValuesComponent, DatetimeModalContainerComponent, DatetimeModalComponent, SidebarMenuComponent, SidebarMenuItemsComponent, AboutComponent, PrivacyComponent, SidebarBreadcrumbsComponent, ContactComponent, NewVisContainerComponent, NewVisComponent, VisFormComponent, CreateComponent, CampaignsComponent],
+  declarations: [FilterContainerComponent, SearchComponent, SearchContainerComponent, PhenomenonComponent, NavContainerComponent, NavRightComponent, BottomBarContainerComponent, DatepickerComponent, FilterSwitcherComponent, FilterComponent, ImpressumComponent, FaqComponent, DonateComponent, ThanksComponent, PhenoInfoComponent, PhenoInfoModalComponent, VisContainerComponent, VisComponent, FilterContainerValuesComponent, FilterValuesComponent, DatetimeModalContainerComponent, DatetimeModalComponent, SidebarMenuComponent, SidebarMenuItemsComponent, AboutComponent, PrivacyComponent, SidebarBreadcrumbsComponent, ContactComponent, NewVisContainerComponent, NewVisComponent, VisFormComponent, CreateComponent, CampaignsComponent, ForumComponent, ThreadsComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -57,7 +60,9 @@ import { CampaignsComponent } from './campaigns/campaigns.component';
     useClass: TokenInterceptor,
     multi: true
   },
-    PhenomenaService
+    PhenomenaService,
+    [CampaignService],
+    [DatePipe]
 
 ],
   exports: [FilterContainerComponent, NavContainerComponent, BottomBarContainerComponent, PhenomenonComponent, ImpressumComponent, FaqComponent, DonateComponent, ThanksComponent, PhenoInfoModalComponent, FilterContainerValuesComponent, DatetimeModalContainerComponent, NewVisContainerComponent],

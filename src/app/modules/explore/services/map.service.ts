@@ -164,6 +164,7 @@ console.log('pointWorldgeoJSON',pointworldgeoJSON);
 //POLYGON AREA CALCULATION
 
 
+
     this.map.on('draw.create', updateArea);
     this.map.on('draw.delete', updateArea);
     this.map.on('draw.update', updateArea);

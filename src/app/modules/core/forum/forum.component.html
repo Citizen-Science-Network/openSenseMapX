@@ -1,0 +1,28 @@
+<body>
+    <div class="top-bar">
+        <h1>
+            Campaign Forum
+        </h1>
+    </div>
+    <div class="main">
+        <ol>
+        </ol>
+    </div>
+    <div *ngFor= "let thread of allThreads$ | async">
+        <ol class="row">
+            <button (click)="viewThread(thread._id)">View Thread</button>
+             <h4 class="title">
+                {{thread.title}}
+             </h4>
+             <div class="bottom">
+               <p class="timestamp">
+                  Date of creation <br> {{thread.date}}
+               </p>
+               <p class="comment-count">
+                    Comments <br> {{thread.comments}}
+              </p>
+             </div>
+            </ol>
+    </div>         
+   
+</body>

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   login() {
     if(this.loginForm.valid)
       this.loggedIn.emit(this.loginForm.getRawValue());
-  }
+ }
 
 }
 

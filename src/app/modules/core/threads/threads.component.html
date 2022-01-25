@@ -1,0 +1,88 @@
+<body>
+    <div *ngIf="thread$ |async; let thread">
+
+        <!-- <ng-container *ngIf="!(loggedIn$) | async">
+            <h1>Please log in to see the threads</h1>
+        </ng-container>  -->
+
+        <ng-container *ngIf="loggedIn$ | async">
+            <button (click)="showThreadForm(thread)">Update</button>
+        </ng-container>
+       
+        <div *ngIf="isUpdateActivated">
+       
+          <form (ngSubmit)="updateThread(thread._id)" #updateForm="ngForm">
+
+          <div class="form-group">
+
+            <input 
+ 
+              type = "text"
+ 
+              id="title"
+ 
+              name="title"
+ 
+              class ="form-control"
+ 
+              required
+ 
+              [(ngModel)] = "thread.title"
+ 
+              style = "width:400px"
+              
+              readonly 
+              />
+              
+        </div>
+
+        <h3> This thread was created at: {{thread.date}}</h3>
+
+        <div [hidden]="isUpdateActivated" class="form-group">
+
+            <input 
+ 
+              type = "date"
+
+              id="threaddate"
+ 
+              name="threaddate"
+ 
+              class ="form-control"
+ 
+              required
+
+              (ngModelChange)="formatThreadDate($event)"
+
+              [(ngModel)] = "thread.date"
+
+              style = "width:400px"
+              
+              />
+              
+        </div>        
+        <div class="form-group">
+
+            <input 
+ 
+              type = "text"
+
+              id="comments"
+ 
+              name="comments"
+ 
+              class ="form-control"
+
+              (ngModelChange)="addComments($event)" 
+ 
+              [(ngModel)] = "thread.comments"
+
+              style = "width:400px"
+                         
+            />
+              
+        </div>        
+        
+        <button>Add comment</button>
+    
+

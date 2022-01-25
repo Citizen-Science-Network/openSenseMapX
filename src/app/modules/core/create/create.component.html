@@ -2,8 +2,8 @@
 <p id="demo"></p>
 
 <div [hidden]="submitted">
-<form (ngSubmit)="onSubmit()" #myForm = "ngForm" method="POST" action="/users/campaign">
-  <div class="field">
+<form (ngSubmit)="onSubmit(createForm)" #createForm = "ngForm">
+  <div class="form-group">
         <p class="control has-icons-left has-icons-right">
           <input type="text"
           class="input"
@@ -23,7 +23,6 @@
       class="notification is-danger is-light">
       Title is required!
   </div>
-
   <div class="field">
     <p class="control is-expanded has-icons-left has-icons-right">
       <input type="text"
@@ -45,6 +44,7 @@
   </div>
 
   <div class="field">
+  <div class="form-group">
     <p class="control has-icons-left">
          <input type="text"
          class="input"
@@ -183,7 +183,8 @@
       </p>
   </div>
 
-  <div class="select is-multiple">
+   <!-- <div class="select is-multiple">
+
       <label for="power">Phenomena</label>
       <select multiple
               size="10"
@@ -195,13 +196,28 @@
                 [value]="one.phenomenonLabel[0].value">{{one.phenomenonLabel[0].value}}
               </option>
       </select>
-    </div>
+    </div>   -->
+
+    <div class="field">
+      <p class="control has-icons-left">
+          <input type="string"
+          class="input"
+          id="phenomena"
+          required
+          placeholder="Precipitation"
+          [(ngModel)]="model.phenomena"
+          name="phenomena">
+          <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+          </span>
+      </p>
+  </div> 
     <div>
       <button
             type="submit"
             class="button is-dark"
-            [disabled]="!myForm.form.valid">
-            Submit
+            [disabled]="createForm.invalid">
+            Create
           </button>
     </div>
   </form>
@@ -257,3 +273,10 @@
     campaign{{campaign.title}}
 
   </div>
+
+  <div *ngIf="singleCampaign$ | async; let singleCampaign">
+
+    {{singleCampaign.title}}
+
+  </div>
+
