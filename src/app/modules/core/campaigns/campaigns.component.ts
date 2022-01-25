@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'osem-campaigns',
   templateUrl: './campaigns.component.html',

@@ -147,7 +147,7 @@ export class MapService {
       controls: {
         combine_features: false,
         uncombine_features: false,
-        point: false,
+        point: true,
         line_string: false,
         polygon: true,
         trash: true
@@ -185,17 +185,46 @@ console.log('pointWorldgeoJSON',pointworldgeoJSON);
             console.log("type_feat",type_feat)
 
         //Creating multipolygon from drawn features
-        var polygeoJSON = turf.multiPolygon([[turf.coordAll(data)]]);
-        that.uiService.setSelectedPolygon(`${JSON.stringify(polygeoJSON.geometry.coordinates)}`)
+        var polygeoJSON = turf.polygon(data);
+        that.uiService.setSelectedPolygon(`${JSON.stringify(polygeoJSON)}`)
 
-        // Calculating points within the polygons
-          var ptsWithin = turf.pointsWithinPolygon(pointworldgeoJSON, polygeoJSON);
+        let filterObjData = {type:['Polygon']};
+        let resultData = data.filter(o => filterObjData.type.includes(o.features));
+        console.log("resultData", resultData);
+
+
+ /*       var arr = [{"time":"2016-07-26 09:02:27","type":"aa"}, {"time":"2016-04-21 20:35:07","type":"ae"}, {"time":"2016-08-20 03:31:57","type":"ar"}, {"time":"2017-01-19 22:58:06","type":"ae"}, {"time":"2016-08-28 10:19:27","type":"ae"}, {"time":"2016-12-06 10:36:22","type":"ar"}, {"time":"2016-07-09 12:14:03","type":"ar"}, {"time":"2016-10-25 05:05:37","type":"ae"}, {"time":"2016-06-05 07:57:18","type":"ae"}, {"time":"2016-10-08 22:03:03","type":"aa"}, {"time":"2016-08-13 21:27:37","type":"ae"}, {"time":"2016-04-09 07:36:16","type":"ar"}, {"time":"2016-12-30 17:20:08","type":"aa"}, {"time":"2016-03-11 17:31:46","type":"aa"}, {"time":"2016-05-04 14:08:25","type":"ar"}, {"time":"2016-11-29 05:21:02","type":"ar"}, {"time":"2016-03-08 05:46:01","type":"ar"}, ];
+        var filtered = arr.filter(a => a.type == "ar");
+        console.log("filter",filtered)
+
+        let arr2 = [{"type":"Feature","geometry":{"type":"Point","coordinates":[-115.55783329999998,32.9646667]},"properties":{"magType":"mb","type":"earthquake","horizontalError":0.32,"depthError":0.58,"city":"Brawley","state":"California","country":"US"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-115.54583329999998,32.98]},"properties":{"magType":"mb","type":"earthquake","horizontalError":0.24,"depthError":0.46,"city":"Brawley","state":"California","country":"US"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-118.13383329999999,33.777333299999995]},"properties":{"magType":"ml","type":"earthquake","horizontalError":0.77,"depthError":0.9,"city":"Brawley","state":"California","country":"US"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-115.555,32.967]},"properties":{"magType":"ml","type":"earthquake","horizontalError":0.43,"depthError":0.67,"city":"Isangel","state":"Tafea","country":"VU"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-115.55216670000001,32.9658333]},"properties":{"magType":"mw","type":"tsunami","horizontalError":0.79,"depthError":1.35,"city":"Zaybak","state":"Badakhshan","country":"AF"}}];
+        let arr3 = [{"type":"FeatureCollection","features":{"type":"FeatureCollection","features":[{"id":"d2b72b95a3d2e71023b30dec2bcd4a25","type":"Feature","properties":{},"geometry":{"coordinates":[12.38898666207686,52.55818114186749],"type":"Point"}},{"id":"a953de69fe488ac6b63432ed9cc1849a","type":"Feature","properties":{},"geometry":{"coordinates":[[[12.618890350333658,52.605381888503445],[12.697587010152404,52.48001525380096],[12.553577619135382,52.49502915904117],[12.618890350333658,52.605381888503445]]],"type":"Polygon"}},{"id":"e5cdebb9a5472203e215a5006298b5d6","type":"Feature","properties":{},"geometry":{"coordinates":[12.890517501382021,52.62939748084227],"type":"Point"}}]}}]
+
+let filterObj = {country:['US','AF'], city: ['Brawley','Zaybak'], magType:['mw']};
+
+let result = arr2.filter(o => filterObj.country.includes(o.properties.country));
+                           //  && filterObj.city.includes(o.properties.city));
+                            // && filterObj.magType.includes(o.properties.magType));
+
+let filterObj3 = {id:['d2b72b95a3d2e71023b30dec2bcd4a25']};
+let result3 = arr3.filter(o => filterObj3.id.includes(o.features.type));
+
+console.log("arr2", result);
+console.log("arr3", result3);
+console.log("polygeoJSONfilter", polygeoJSON);
+
+
+*/
+
+
+// Calculating points within the polygons
+//          var ptsWithin = turf.pointsWithinPolygon(pointworldgeoJSON, polygeoJSON);
 
         //Providing a message for the box
           answer.innerHTML = `<p><strong>#Polygons: </strong> ${JSON.stringify(data.features.length)}
           <strong><br>Total area: </strong> ${rounded_area} (km2)
-          <strong><br>Points within the polygon: </strong>
-          ${JSON.stringify(ptsWithin.features.length)} of ${JSON.stringify(pointworldgeoJSON.features.length)}</p>`;
+          <strong><br>Points within the polygon: </strong>`
+//          ${JSON.stringify(ptsWithin.features.length)} of ${JSON.stringify(pointworldgeoJSON.features.length)}</p>`;
 
       } else {
         var polygeoJSON_null = '';
