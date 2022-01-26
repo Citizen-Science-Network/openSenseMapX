@@ -1,12 +1,12 @@
-<section class="section" *ngFor="let campaign of allCampaigns$ | async; let i = index;">
-  <div class="item-container">
+<section class="section" *ngFor="let campaign of dummyCampaigns">
+<div class="item-container">
   <div class="img-container">
       <img src="https://i.stack.imgur.com/WpMdM.png" alt="Location map">
       <div class="course-details">
           <p class="date">
               Starting {{ campaign.startDate }}
           </p>
-          <p class="date">
+          <p class="price">
               Ending {{ campaign.endDate }}
           </p>
       </div>
@@ -14,107 +14,13 @@
   <div class="separator"></div>
   <div class="course-info">
       <p class="title">{{ campaign.title }}</p>
-      <p class="sub-title">Id is {{ campaign._id}}</p>
+      <p class="sub-title">{{ campaign.owner}}</p>
       <div class="title-separator"></div>
-      <div>
-        <button class="modify_button" (click)="deleteCampaign(campaign._id)">Delete</button>
-        <button class="modify_button" (click)="showUpdateForm(campaign);changeUpdate('cu_'+i)">Update</button>
-        <button class="modify_button" (click)="joinCampaign(campaign)">Join</button>
-        <button class="modify_button" (click)="createThread(campaign)">Create Thread</button>
+      <div class="toggle">
+        <i class="fa fa-lock"></i>
       </div>
-      <div class="icon"  [ngClass]="{'active': view_ac === 'ac_'+i}" (click)="changeAccordion('ac_'+i)">
-        <i class="fas fa-arrow-circle-up"></i>
-      </div>
+      <!--><a href="#" class="more-info">More info</a><-->
   </div>
-</div>
-  <div class="content-container" [ngClass]="{'active': view_ac === 'ac_'+i}" *ngIf="view_ac === 'ac_'+i" >
-    <form (ngSubmit)="updateCampaign(updateForm)" #updateForm="ngForm">
-       <div>
-        <label for="title">Campaign Title</label>
-        <input
-          type = "text"
-          id="title"
-          name="title"
-          class ="form-control"
-          required
-          [disabled] = "view_update !== 'cu_'+i"
-          [(ngModel)]="campaign.title"
-          style = "width:400px"/>
-       </div>
-       <div>
-        <label for="aboutMe">Campaign AboutMe</label>
-        <input
-          type = "text"
-          id="aboutMe"
-          name="aboutMe"
-          class ="form-control"
-          required
-          [(ngModel)]="campaignToBeUpdated.aboutMe"
-          style = "width:400px"/>
-      </div>
-      <div class="form-group">
-        <label for="campaignGoals">Campaign Goals</label>
-        <input
-          type = "text"
-          id="campaignGoals"
-          name="campaignGoals"
-          class ="form-control"
-          required
-          [(ngModel)]="campaignToBeUpdated.campaignGoals"
-          style = "width:400px"/>
-      </div>
-      <div class="form-group">
-        <label for="details">Campaign Details</label>
-        <input
-          type = "text"
-          id="campaignDetails"
-          name="campaignDetails"
-          class ="form-control"
-          required
-          [(ngModel)]="campaignToBeUpdated.campaignDetails"
-          style = "width:400px"/>
-      </div>
-      <div class="form-group">
-        <label for="startDate">Campaign StartDate</label>
-        <input
-          type = "date"
-          id="startDate"
-          name="startDate"
-          class ="form-control"
-          required
-          (ngModelChange)="formatStartdate($event)"
-          [ngModel]="campaignToBeUpdated.startDate"
-          style = "width:400px"/>
-      </div>
-      <div class="form-group">
-        <label for="endDate">Campaign Enddate</label>
-        <input
-          type = "date"
-          id="endDate"
-          name="endDate"
-          class ="form-control"
-          required
-          (ngModelChange)="formatEnddate($event)"
-          [ngModel]="campaignToBeUpdated.endDate"
-          style = "width:400px"/>
-      </div>
-      <div class="select is-multiple">
-        <label for="phenomena">Campaign Phenomena</label>
-        <select
-          multiple
-          size="10"
-          id="phenomena"
-          name="phenomena"
-          required
-          [(ngModel)]="campaignToBeUpdated.phenomena">
-        <option *ngFor="let one of phenomena | async"
-                [value]="one.phenomenonLabel[0].value">{{one.phenomenonLabel[0].value}}
-        </option>
-      </select>
-      </div>
-      <br>
-       <button class="modify_button" [disabled]="updateForm.invalid || view_update !== 'cu_'+i " type="submit">Save</button>
-  </form>
   </div>
-
 </section>
+

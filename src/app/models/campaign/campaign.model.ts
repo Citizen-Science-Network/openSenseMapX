@@ -11,7 +11,6 @@ export interface Campaign {
   endDate: Date;
   polygonDraw: string;
   phenomena: Array<string>;
-  participants: Array<string>;
 }
 
 
