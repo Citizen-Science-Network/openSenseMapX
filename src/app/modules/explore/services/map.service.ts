@@ -23,6 +23,7 @@ import { FeatureCollection } from 'geojson';
 import { getAllJSDocTags } from 'typescript';
 
 import worldLocalJSONFile from '/src/assets/data/world.json';
+import {MapboxDrawStyles} from './MapboxDrawStyle'; //adding drawing styles
 
 @Injectable({
   providedIn: 'root'
@@ -112,8 +113,10 @@ export class MapService {
       // Add geolocate control to the map.
     this.map.addControl(this.UserLocation,'top-left');
 
+    // Add Navigation controls to the map
+    this.map.addControl(new NavigationControl({
+      showCompass: false}), 'top-left');
 
-    this.map.addControl(new NavigationControl(), 'top-left');
     // disable map rotation using right click + drag
     this.map.dragRotate.disable();
 
@@ -128,11 +131,6 @@ export class MapService {
     //MOUSE COORDINATES
     this.map.on('mousemove', (e) => {
       document.getElementById('infoCoord').innerHTML =
-      // `e.point` is the x, y coordinates of the `mousemove` event
-      // relative to the top-left corner of the map.
-      //JSON.stringify(e.point) +
-      //'<br />' +
-      // `e.lngLat` is the longitude, latitude geographical position of the event.
       JSON.stringify(e.lngLat.wrap(), function(key, val) {
         return val.toFixed ? Number(val.toFixed(3)) : val;
       });
@@ -163,7 +161,11 @@ export class MapService {
         line_string: false,
         polygon: true,
         trash: true
-      },
+        },
+        //Styles for polygon and points drawn
+
+          styles: MapboxDrawStyles,
+
   });
 
 //(12.14.21) GETTING THE DATA FROM LOCAL JSON FILE (See file json-typings.d.ts in app folder and worldLocalJSONData and import worldLocalJSONFile)
