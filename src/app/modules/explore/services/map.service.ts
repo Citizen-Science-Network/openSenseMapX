@@ -144,8 +144,7 @@ export class MapService {
       zoom: 15,
       essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
-      });
-
+    });
   }
 
   DrawControlMap(){
@@ -154,6 +153,7 @@ export class MapService {
     this.draw = new MapboxDraw({
       // Instead of showing all the draw tools, show only the line string and delete tools.
       displayControlsDefault: false,
+      userProperties: true,
       controls: {
         combine_features: false,
         uncombine_features: false,
