@@ -39,6 +39,7 @@ export interface UiState {
   chartLoading: boolean,
 
   selectedPolygon: any,
+  selectedPoint: any,
   drawmode: boolean,
 }
 
@@ -129,6 +130,7 @@ export function createInitialState(): UiState {
     chartLoading: false,
 
     selectedPolygon: [],
+    selectedPoint: [],
     drawmode: false,
   };
 }

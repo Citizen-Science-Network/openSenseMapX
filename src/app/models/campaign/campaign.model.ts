@@ -10,6 +10,7 @@ export interface Campaign {
   startDate: Date;
   endDate: Date;
   polygonDraw: string;
+  pointDraw: string;
   phenomena: Array<string>;
 }
 

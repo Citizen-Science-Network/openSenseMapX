@@ -30,6 +30,7 @@
         class="input"
         id="polygonDraw"
       placeholder="polygonDraw are f..."
+      readonly
       [(ngModel)]="model.polygonDraw"
       name="polygonDraw"
       #polygonDraw="ngModel">
@@ -42,6 +43,27 @@
     [hidden]="polygonDraw.valid || polygonDraw.pristine"
     class="notification is-danger is-light">
     polygonDraw details are required!
+  </div>
+
+  <div class="field">
+    <p class="control is-expanded has-icons-left has-icons-right">
+      <input type="text"
+        class="input"
+        id="pointDraw"
+      placeholder="pointDraw are f..."
+      readonly
+      [(ngModel)]="model.pointDraw"
+      name="pointDraw"
+      #pointDraw="ngModel">
+        <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+        </span>
+    </p>
+  </div>
+  <div
+    [hidden]="pointDraw.valid || pointDraw.pristine"
+    class="notification is-danger is-light">
+    pointDraw details are required!
   </div>
 
   <div class="field">
@@ -183,7 +205,7 @@
       </p>
   </div>
 
-  <!--div class="select is-multiple">
+  <div class="select is-multiple">
       <label for="power">Phenomena</label>
       <select multiple
               size="10"
@@ -195,7 +217,7 @@
                 [value]="one.phenomenonLabel[0].value">{{one.phenomenonLabel[0].value}}
               </option>
       </select>
-    </div-->
+    </div>
     <div>
       <button
             type="submit"
@@ -216,6 +238,10 @@
     <div class="box">
       <div class="col-xs-3">Polygon</div>
       <div class="col-xs-9">{{ model.polygonDraw }}</div>
+    </div>
+    <div class="box">
+      <div class="col-xs-3">Point</div>
+      <div class="col-xs-9">{{ model.pointDraw }}</div>
     </div>
     <div class="box">
       <div class="col-xs-3">About me</div>

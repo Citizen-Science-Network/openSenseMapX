@@ -17,6 +17,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   phenomena;
   model = new FormDesign();
   selectedPolygon$ = this.uiQuery.selectedPolygon$;
+  selectedPoint$ = this.uiQuery.selectedPoint$;
 
   submitted = false;
   allCampaigns$ = this.campaignQuery.selectAll();
@@ -33,7 +34,9 @@ export class CreateComponent implements OnInit, OnDestroy {
      this.campaignservice.get().subscribe();
      this.uiService.setFilterVisible(false);
      this.mapService.DrawControlMap();
+     //this.mapService.flyToCampaign();
      this.selectedPolygon$.subscribe(polygon => {this.model.polygonDraw = polygon});
+     this.selectedPoint$.subscribe(point => {this.model.pointDraw = point});
      let that = this;
      setTimeout(function(){ that.uiService.setdrawmode(true)},100)
     }

@@ -10,6 +10,7 @@ export class FormDesign {
     public startDate?: Date,
     public endDate?: Date,
     public polygonDraw?: string,
+    public pointDraw?: string,
     public phenomena?: string
   ) {  }
 

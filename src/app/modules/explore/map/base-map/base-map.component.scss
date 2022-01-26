@@ -18,19 +18,19 @@
 
 }
 
-.info-box {
+.info-geojson-box {
   position: absolute;
-  margin: 20px;
-  width: 25%;
-  height: 25%;
-  top: 50;
+  margin: 5px;
+  width: 30%;
+  height: 30%;
+  top: 10;
   bottom: 20px;
   padding: 20px;
   border: 1.5px solid rgb(214, 215, 213);
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 footer {
@@ -40,7 +40,7 @@ footer {
   overflow-y: scroll;
 }
 
-#info {
+#infoCoord {
   display: table;
   position: relative;
   margin: 0px auto;
@@ -59,3 +59,18 @@ footer {
 li {
   list-style-type: square;
 }
+
+#fly {
+  display: block;
+  position: relative;
+  margin: 0px auto;
+  width: 20%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  background: #ee8a65;
+  }

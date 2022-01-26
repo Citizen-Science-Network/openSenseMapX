@@ -1,13 +1,14 @@
 <div id="map"></div>
 <div id="demo"></div>
-<pre id="info"></pre>
+<pre id="infoCoord"></pre>
+<button id="fly">Fly to campaign</button>
 <router-outlet></router-outlet>
 
-<div  class="info-box" *ngIf="drawmode$ | async">
+<div  class="info-geojson-box" *ngIf="drawmode$ | async">
     <ul>
-      <!--li>Use the <b>market drawing tool</b> to mark relevant locations for your campaign.
+      <li>Use the <b>market drawing tool</b> to mark relevant locations for your campaign.
       </li>
-      <br-->
+      <br>
       <li>Use the <b>polygon drawing tools</b> to cover the boxes you want to send an invitation to participate in the campaign.
       </li>
       <br>
