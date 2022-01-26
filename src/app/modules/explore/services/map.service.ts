@@ -137,8 +137,7 @@ export class MapService {
     });
 
     document.getElementById('fly').addEventListener('click', () => {
-      // Fly to a random location by offsetting the point -74.50, 40
-      // by up to 5 degrees.
+      // Fly to a random location by offsetting the point
       this.map.flyTo({
       center: [7.61, 51.964],
       zoom: 15,
